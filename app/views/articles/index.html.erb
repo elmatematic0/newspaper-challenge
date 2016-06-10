@@ -2,12 +2,14 @@
 
 
 <ul>
+ <% i = 1 %>
 <% @articles['results'].each do |article| %>
   <li>
       <%= article['itemsCity'] %> | 
       <!-- <object height="100%" width="100%" type="application/pdf" data="<%= article['pdf'] %>"</object> -->
-      <%= article['itemsStartYear'] %>
+      <%= article['itemsStartYear'] %> |
+      <%= link_to 'View', article_path(i) %> | <%= link_to ' Edit', edit_article_path(i) %>
     </li>  
-
+<% i += 1 %>
 <% end %>
 </ul>

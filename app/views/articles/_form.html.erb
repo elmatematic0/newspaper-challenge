@@ -1,0 +1,65 @@
+
+  
+
+
+  <form id="myForm">
+    <label>ID</label>
+    <br>
+    <input type="text" name="id" value="<%= @article['id'] %>" readonly>
+
+    <label>County</label>
+    <br>
+    <input type="text" name="itemsCounty" value="<%= @article['itemsCounty'] %>">
+    
+    <label>State</label>
+    <br>
+    <input type="text" name="itemsState" value="<%= @article['itemsState'] %>">
+    
+    <label>Subject</label>
+    <br>
+    <textarea type="textarea" name="itemsSubject"><%= @article['itemsSubject'] %></textarea>
+    
+    <label>Date</label>
+    <br>
+    <input type="text" name="itemsDate" value="<%= @article['itemsDate'] %>">
+    
+    <label>Place of Publication</label>
+    <br>
+    <input type="text" name="itemsPlaceOfPublication" value="<%= @article['itemsPlaceOfPublication'] %>">
+
+    <label>OCR Text</label>
+    <br>
+    <textarea type="text" name="itemsOcrEng"><%= @article['itemsOcrEng'] %></textarea>
+
+    <label>Title</label>
+    <br>
+    <input type="text" name="itemsTitleNormal" value="<%= @article['itemsTitleNormal'] %>">
+
+  </form> 
+  <br>
+  <input class="saveButton" type="submit" value="Submit"> | <%= link_to "Cancel", article_path(params[:id]) %>
+  
+  
+
+  <script type="text/javascript">
+  
+    $(".saveButton").click(function(){
+    
+    var queryString = $('#myForm').serialize();
+    var postUrl = 'https://script.google.com/macros/s/AKfycbwmXKhtyX_IGhHr0jCJ4EKNEN81sl4R44ZY67dIZSrurVoYml3b/exec?&_idkeys=id&_action=UPDATE&_method=POST&' + queryString;
+    function popitup(url) {
+      newwindow=window.open(postUrl,'name','height=200,width=150');
+      // if (window.focus) {newwindow.focus()}
+      // return false;
+
+    };
+    popitup(postUrl);
+    setTimeout(window.location.replace("<%= article_url(params[:id].to_i)%>"), 4000 ); 
+  
+   
+    
+     });
+
+
+  </script>
+
