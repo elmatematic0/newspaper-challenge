@@ -1,10 +1,10 @@
-<h1><%= @article['itemsTitle'] %></h1>
-<h2><%=@article['itemsCity']%>, <%=@article['itemsState'] %></h2>
+<h1><%= @article['date'] %></h1>
+<h2><%=@article['city']%>, <%=@article['state'] %></h2>
 Counter: <%= @article['counter'] %> | Params ID: <%= "#{params[:id]}" %><br>
 <%= link_to ' Edit', edit_article_path(params[:id]) %><br>
 <%= link_to "<Previous Page", "#{article_path("#{params[:id].to_i - 1}")}"  %>  |  <%= link_to "Next Page >", "#{article_path("#{params[:id].to_i + 1}")}" %>
 <p><b>Subject:</b> <%= @article['itemsSubject'] %></p><br>
-<p><b>OCR Text:</b> <%= @article['itemsOcrEng'] %> </p>
+<p><b>OCR Text:</b> <%= @article['ocr_eng'] %> </p>
 
 <p><%= link_to('PDF Link', @article['pdf']) %></p>
 <embed height="1600px" width="100%"src="<%= @article['pdf'].chomp('.pdf') %>">
