@@ -1,15 +1,17 @@
-<h1>All Articles</h1>
 
-
-<ul>
- <% i = 1 %>
-<% @articles['results'].each do |article| %>
-  <li>
-      <%= article['itemsCity'] %> | 
-      <!-- <object height="100%" width="100%" type="application/pdf" data="<%= article['pdf'] %>"</object> -->
-      <%= article['itemsStartYear'] %> |
-      <%= link_to 'View', article_path(i) %> | <%= link_to ' Edit', edit_article_path(i) %>
-    </li>  
-<% i += 1 %>
-<% end %>
-</ul>
+<div class="pure-g">
+    <div class="pure-u-1-1 l-box"> 
+      <h1>All Articles</h1>
+    </div>
+</div>
+<div class="pure-g">
+  <div>
+    <% i = 1 %>
+    <% @articles['results'].each do |article| %>
+    <div class='pure-u-1-4 l-box'>
+      <a href="http://chroniclingamerica.loc.gov<%=article['url_id']%>#<%=article['words']%>" target="_blank"><img src="http://chroniclingamerica.loc.gov<%= article['url_id']%>/thumbnail.jpg"></a><br><%= link_to 'View', article_path(i), :class => "pure-button" %> | <%= link_to ' Edit', edit_article_path(i), :class => "pure-button pure-button-primary" %>
+    <% i += 1 %>
+    </div>
+    <% end %>
+  </div>
+</div>
