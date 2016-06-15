@@ -1,28 +1,5 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+The Chronicling America website (http://chroniclingamerica.loc.gov/) gives access to over ten million digitally imaged and OCR'd newspapers, published between 1836 and 1922, from towns and cities across the United States. Newspaper pages often contain multiple articles, and sometimes OCR text goes a little rogue, making it hard to answer explore questions and tell stories across time. This prototype includes features of 1) searching, saving and editing metadata (including OCR text) retrieved from the Chronicling America API (http://chroniclingamerica.loc.gov/about/api), and 2) publishing article collections to interactive timelines. 
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
