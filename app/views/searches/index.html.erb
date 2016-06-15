@@ -1,8 +1,9 @@
 <div class="pure-g">
     <div class="pure-u-1-1 l-box">
-<h1>Searches</h1>
-
-<form id="searchForm" class="pure-form">
+<h1>Search for Articles</h1>
+<p><%= link_to "View Saved Articles", articles_path, :class => "pure-button" %></p><hr>
+<p>After you make form selections, click "go" to request search results.</p>
+<p><form id="searchForm" class="pure-form">
   <select id="id_state" name="state">
     <option value="" selected="selected">All states</option>
     <option value="Alabama">Alabama</option>
@@ -240,9 +241,9 @@
 
   <input id="id_proxtext" name="proxtext" type="text" style="color: rgb(187, 187, 187);">
   
-</form>
+</form></p>
 
-<input class="proxtext-btn pure-button pure-button-primary" type="image" alt="GO">
+<input class="proxtext-btn pure-button pure-button-primary" type="image" alt="GO">&nbsp;&nbsp;&nbsp;<%= image_tag("ajax-loader.gif", :class => "loaderImage") %>
 
 </div>
 </div>
@@ -253,8 +254,13 @@
 </div>
 
 <script type="text/javascript">
+
+$(document).ready(function() {
+    $('.loaderImage').hide();
+});
   
      $(".proxtext-btn").click(function(){
+    $('.loaderImage').show();
     var proxtext = "&" + $("#id_proxtext").serialize();
     var words = "&words=" + proxtext.substring(10, 100000);
     var queryString = $('#searchForm').serialize();
@@ -281,15 +287,17 @@
         "<form class='hide' id='post_" + key + "'>" +
           "<input type='text' name='sequence' value='" + val.sequence + "'><input type='text' name='county' value='" + val.county + "'><input type='text' name='edition' value='" + val.edition + "'><input type='text' name='frequency' value='" + val.frequency + "'><input type='text' name='url_id' value='" + val.id + "'><input type='text' name='subject' value='" + val.subject + "'><input type='text' name='city' value='" + val.city + "'><input type='text' name='date' value='" + val.date + "'><input type='text' name='title' value='" + val.title + "'><input type='text' name='end_year' value='" + val.end_year + "'><textarea type='text' name='note'>" + val.note + "</textarea><input type='text' name='state' value='" + val.state + "'><input type='text' name='section_label' value='" + val.section_label + "'><input type='text' name='type' value='" + val.type + "'><input type='text' name='place_of_publication' value='" + val.place_of_publication + "'><input type='text' name='start_year' value='" + val.start_year + "'><input type='text' name='edition_label' value='" + val.edition_label + "'><input type='text' name='publisher' value='" + val.publisher + "'><input type='text' name='language' value='" + val.language + "'><input type='text' name='alt_title' value='" + val.alt_title + "'><input type='text' name='lccn' value='" + val.lccn + "'><input type='text' name='country' value='" + val.country + "'><textarea type='text' name='ocr_eng'>" + jQuery.trim(val.ocr_eng).substring(0, 2000).split(" ").slice(0, -1).join(" ") + "..." + "</textarea><input type='text' name='batch' value='" + val.batch + "'><input type='text' name='title_normal' value='" + val.edition_label + "'><input type='text' name='url' value='" + val.url + "'><input type='text' name='place' value='" + val.place + "'><input type='text' name='page' value='" + val.page + "'>" +
         "</form></div>"
-
+        
         );
-        }); 
+        });
+            $('.loaderImage').hide();
+        
           $(".save").click(function(){
-            var proxtext = "&proxtext=" + $("#id_proxtext").serialize();
-            var words = "&words=" + $("#id_proxtext").serialize();
+            var proxtext = "&" + $("#id_proxtext").serialize();
+            var words = "&words=" + proxtext.substring(10, 100000);
             var button_id = $(this).attr('id')
             var queryString = $('#post_'+button_id).serialize();
-              var postUrl = 'https://script.google.com/macros/s/AKfycbwmXKhtyX_IGhHr0jCJ4EKNEN81sl4R44ZY67dIZSrurVoYml3b/exec?_method=POST&' + queryString + proxtext + words;
+              var postUrl = 'https://script.google.com/macros/s/AKfycbwmXKhtyX_IGhHr0jCJ4EKNEN81sl4R44ZY67dIZSrurVoYml3b/exec?_method=POST&' + queryString + words;
               function popitup(url) {
                 newwindow=window.open(postUrl,'name','height=200,width=150');
                 // if (window.focus) {newwindow.focus()}
@@ -304,7 +312,7 @@
               
                });
        });
-    });
+  }); 
     // var postUrl = 'https://script.google.com/macros/s/AKfycbwmXKhtyX_IGhHr0jCJ4EKNEN81sl4R44ZY67dIZSrurVoYml3b/exec?&_idkeys=id&_action=UPDATE&_method=POST&' + queryString;
     // function popitup(url) {
     //   newwindow=window.open(postUrl,'name','height=200,width=150');

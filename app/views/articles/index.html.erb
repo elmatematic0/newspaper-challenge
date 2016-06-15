@@ -1,17 +1,25 @@
 
 <div class="pure-g">
     <div class="pure-u-1-1 l-box"> 
-      <h1>All Articles</h1>
+      <h1>Saved Articles (<span id="allCount"></span>)</h1>
+      <p><%= link_to 'Search for additional articles', searches_path, :class => "pure-button" %></p>
     </div>
-</div>
+</div><hr>
 <div class="pure-g">
   <div>
     <% i = 1 %>
     <% @articles['results'].each do |article| %>
     <div class='pure-u-1-4 l-box'>
-      <a href="http://chroniclingamerica.loc.gov<%=article['url_id']%>#<%=article['words']%>" target="_blank"><img src="http://chroniclingamerica.loc.gov<%= article['url_id']%>/thumbnail.jpg"></a><br><%= link_to 'View', article_path(i), :class => "pure-button" %> | <%= link_to ' Edit', edit_article_path(i), :class => "pure-button pure-button-primary" %>
+      <a href="http://chroniclingamerica.loc.gov<%=article['url_id']%>#words=<%=article['words']%>" target="_blank"><img src="http://chroniclingamerica.loc.gov<%= article['url_id']%>/thumbnail.jpg"></a><br>(<%= i %>) <%= link_to 'View', article_path(i), :class => "pure-button" %> | <%= link_to ' Edit', edit_article_path(i), :class => "pure-button pure-button-primary" %>
     <% i += 1 %>
     </div>
     <% end %>
+    
   </div>
 </div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#allCount').html("<%=i-1%>");
+});
+</script>

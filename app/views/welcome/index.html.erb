@@ -1,0 +1,75 @@
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+        <div class="header">
+            <h1 class="brand-title">Chronicling Egypt Exploration Fund Artifacts</h1>
+            <h2 class="brand-tagline">Presenting a timeline about Egyptian Papyri and other archaelogical recoveries</h2>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a class="pure-button" href="#prototype">Prototype</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="#timeline">Timeline</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+            
+            <div class="posts">
+                <h1 class="content-subhead">Prototype </h1>
+                <section class="post">
+                    <header class="post-header">
+                        <img class="post-avatar"  height="100" width="100" src="http://chroniclingamerica.loc.gov/lccn/sn83045774/1922-04-30/ed-1/seq-97//thumbnail.jpg">
+
+                        <h2 class="post-title" id="prototype">Introducing the Prototype Used for Creating a Timeline</h2>
+                    </header>
+
+                    <div class="post-description">
+                        <p>
+                            The <%= link_to "Chronicling America", "http://chroniclingamerica.loc.gov/" %> website gives access to over ten million digitally imaged and OCR'd newspapers, published between 1836 and 1922, from towns and cities across the United States. Newspaper pages often contain multiple articles, and sometimes OCR text goes <%= link_to "a little rogue", "http://chroniclingamerica.loc.gov/lccn/sn83030272/1914-08-02/ed-1/seq-35/ocr/" %>, making it hard to answer explore questions and tell stories across time. This prototype includes features of 1) searching, saving and editing metadata (including OCR text) retrieved from the <%= link_to "Chronicling America API", "http://chroniclingamerica.loc.gov/about/api" %>, and 2) publishing article collections to interactive timelines. 
+                        </p>
+                        <p> Give it a try! <%= link_to "Search and save", searches_path %> new articles and <%= link_to "view and edit", articles_path %> saved articles.</p>
+                    </div>
+                </section>
+            </div>
+
+            <div class="posts">
+                <h1 class="content-subhead">Timeline</h1>
+
+                <section class="post">
+                    <header class="post-header">
+                        <img class="post-avatar"  height="100" width="100" src="http://chroniclingamerica.loc.gov/lccn/sn85030287/1906-08-16/ed-1/seq-5/thumbnail.jpg">
+
+                        <h2 class="post-title" id="timeline">Interactive Timeline Exploring Egypt Exploration Fund Archaelogical Recoveries</h2>
+                    </header>
+
+                    <div class="post-description">
+                        <iframe src='https://cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=1naTiFsY4VCYyPjiWhbOZfi3JjU72atYrlNWsVbtklVE&font=Default&lang=en&initial_zoom=2&height=650' width='100%' height='650' frameborder='0'></iframe>
+                    </div>
+                </section>
+
+                
+            </div>
+
+            <div class="footer">
+                <div class="pure-menu pure-menu-horizontal">
+                    <ul>
+                        <li class="pure-menu-item"><a href="http://purecss.io/" class="pure-menu-link">About</a></li>
+                        <li class="pure-menu-item"><a href="http://twitter.com/yuilibrary/" class="pure-menu-link">Twitter</a></li>
+                        <li class="pure-menu-item"><a href="http://github.com/yahoo/pure/" class="pure-menu-link">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+

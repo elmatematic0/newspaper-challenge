@@ -17,12 +17,12 @@
               </div>
 
               <div class="pure-control-group">
-                  <label for="OCR">OCR Text</label>   
+                  <label for="OCR">OCR Text (Please edit!)</label>   
                   <textarea type="text" name="ocr_eng"><%= @article['ocr_eng'] %></textarea>
               </div>
 
               <div class="pure-control-group">
-                  <label for="words">Words</label>   
+                  <label for="words">Search Terms (highlight in scanned text)</label>   
                   <input type="text" name="words" value="<%= @article['words'] %>">
               </div>
           </fieldset>
@@ -31,7 +31,7 @@
       <div class="ta-center"> <input class="saveButton pure-button pure-button-primary" type="submit" value="Submit"> | <%= link_to "Cancel", article_path(params[:id]), :class => "pure-button" %> | <input class="deleteButton pure-button button-error" type="submit" value="Delete"></div>
   </div>
 <div class="pure-u-2-3">
-  <embed height="1000px" width="100%"src="http://chroniclingamerica.loc.gov<%= @article['url_id']%>#<%= @article['words'] %>">
+  <embed height="1000px" width="100%"src="http://chroniclingamerica.loc.gov<%= @article['url_id']%>#words=<%= @article['words'] %>">
   <!-- <a href="http://chroniclingamerica.loc.gov<%=@article['url_id']%>#<%=@article['words']%>" target="_blank"><img src="http://chroniclingamerica.loc.gov<%= @article['url_id']%>/thumbnail.jpg"></a> -->
 </div>
 </div>
@@ -58,20 +58,18 @@
      });
 
     $(".deleteButton").click(function(){
-    
-    var queryString = $('#myForm').serialize();
-    var postUrl = 'https://script.google.com/macros/s/AKfycbwmXKhtyX_IGhHr0jCJ4EKNEN81sl4R44ZY67dIZSrurVoYml3b/exec?&_idkeys=id&_action=DELETE&_method=POST&' + queryString;
-    function popitup(url) {
-      // confirm("Are you sure?");
-      newwindow=window.open(postUrl,'name','height=200,width=150');
-      // if (window.focus) {newwindow.focus()}
-      // return false;
-
+    var r = confirm("Are you sure?");
+    if (r == true) {
+        var queryString = $('#myForm').serialize();
+        var postUrl = 'https://script.google.com/macros/s/AKfycbwmXKhtyX_IGhHr0jCJ4EKNEN81sl4R44ZY67dIZSrurVoYml3b/exec?&_idkeys=id&_action=DELETE&_method=POST&' + queryString;
+        function popitup(url) {
+          newwindow=window.open(postUrl,'name','height=200,width=150');
+        };
+        popitup(postUrl);
+        setTimeout(window.location.replace("<%= articles_url%>"), 6000 ); 
+    } else {
+        
     };
-    popitup(postUrl);
-    setTimeout(window.location.replace("<%= articles_url%>"), 6000 ); 
-  
-   
     
      });
 
