@@ -9,7 +9,7 @@
   <div>
     <% i = 1 %>
     <% @articles['results'].each do |article| %>
-    <div class='pure-u-1-4 l-box'>
+    <div class='pure-u-1 pure-u-md-1-2 pure-u-lg-1-4'>
       <a href="http://chroniclingamerica.loc.gov<%=article['url_id']%>#words=<%=article['words']%>" target="_blank"><img src="http://chroniclingamerica.loc.gov<%= article['url_id']%>/thumbnail.jpg"></a><br>(<%= i %>) <%= link_to 'View', article_path(i), :class => "pure-button" %> | <%= link_to ' Edit', edit_article_path(i), :class => "pure-button pure-button-primary" %>
     <% i += 1 %>
     </div>
